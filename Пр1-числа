@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double a,b;
+    cout << "a, b" << endl;
+    cin >> a >> b;//считывание двух чисел
+    cout << "a+b" << endl ;
+    cout << a+b << endl; //сложение
+    cout << "a-b" << endl;
+    cout << a-b << endl;//вычитание
+    system("pause");
+    return 0;
+}

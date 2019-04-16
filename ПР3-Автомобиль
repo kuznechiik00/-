@@ -1,40 +1,45 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include <iostream>
 #include <string>
+#include <windows.h>
 using namespace std;
 class Auto
 {
-public:
-	int num;
+private:
+	string mark;
 	string model;
-	string year;
-	float yearsold;
-
-
+	string color;
+	string number;
+public:
+	void define(string b, string m, string c, string n)
+	{
+		mark = b;
+		model = m;
+		color = c;
+		number = n;
+	}
+	void display(void)
+	{
+		cout << "Марка: " << mark << "; Модель: " << model << "; Цвет: " << color << "; Номер: " << number << endl;
+	}
 };
 int main()
 {
-	int n;
-	setlocale(LC_ALL, "Russian");
-	Auto nev[400];
-	cout << "введите кол-во авто" << endl;
-	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "введите марку авто" << endl;
-		cin >> nev[i].model;
-		cout << "введите год" << endl;
-		cin >> nev[i].year;
-		cout << "введите кол-во литров" << endl;
-		cin >> nev[i].yearsold;
-	}
-
-	for (int i = 0; i < n; i++)
-	{
-
-		cout << i + 1 << ")" << nev[i].model << " " << nev[i].year << " " << nev[i].yearsold << endl;
-
-	}
+	setlocale(0, "rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	Auto a;
+	string b, m, c, n;
+	cout << "Введите марку автомобиля" << endl;
+	getline(cin, b);
+	cout << "Введите модель автомобиля" << endl;
+	getline(cin, m);
+	cout << "Введите цвет автомобиля" << endl;
+	getline(cin, c);
+	cout << "Введите номер автомобиля" << endl;
+	getline(cin, n);
+	a.define(b, m, c, n);
+	a.display();
+	system("pause");
 	return 0;
-
 }

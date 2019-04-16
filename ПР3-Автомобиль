@@ -1,0 +1,40 @@
+﻿#include "pch.h"
+#include <iostream>
+#include <string>
+using namespace std;
+class Auto
+{
+public:
+	int num;
+	string model;
+	string year;
+	float yearsold;
+
+
+};
+int main()
+{
+	int n;
+	setlocale(LC_ALL, "Russian");
+	Auto nev[400];
+	cout << "введите кол-во авто" << endl;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cout << "введите марку авто" << endl;
+		cin >> nev[i].model;
+		cout << "введите год" << endl;
+		cin >> nev[i].year;
+		cout << "введите кол-во литров" << endl;
+		cin >> nev[i].yearsold;
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+
+		cout << i + 1 << ")" << nev[i].model << " " << nev[i].year << " " << nev[i].yearsold << endl;
+
+	}
+	return 0;
+
+}

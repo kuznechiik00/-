@@ -1,35 +1,59 @@
-#include "pch.h"
+#i#include "pch.h"
 #include <iostream>
 #include <string>
-#include <windows.h>
+#include "windows.h"
+#include <cstdio>
 using namespace std;
-class vek
-{
+
+class vector {  
 public:
+	double ax;
+	double ay;
+	double bx;
+	double by;
+	double sum1;
+	double sum2;
+	double dif1;
+	double dif2;
+	void set()
+	{
+		cout << "Введите координаты x вектора а:";
+		cin >> ax;
+		cout << "Введите координаты y вектора а:";
+		cin >> ay;
+		cout << "Введите координаты x вектора b:";
+		cin >> bx;
+		cout << "Введите координаты y вектора b:";
+		cin >> by;
+		sum1 = ax + bx;
+		sum2 = ay + by;
+		dif1 = ax - bx;
+		dif2 = ay - by;
 
+	}
+	void show()
+	{
+		cout << "Вектор а=(" << ax << ";" << ay << ")"<< endl;
+		cout << "Вектор b=(" << bx << ";" << by << ")" << endl;
+		cout << "Сумма векторов а+b=(" << sum1 << ";" << sum2<< ")" << endl;
+		cout << "Разность векторов а-b=(" << dif1 << ";" << dif2 << ")" << endl;
 
-	int x0;
-	int y0;
-	int x1;
-	int y1;
+	}
 
 
 };
+
+
 int main()
 {
-	int n;
-	int xmax;
-	int ymax;
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "Rus");
+	vector x;
 
-	setlocale(LC_ALL, "Russian");
-	vek per;
-		cout << "введите x0" << endl;
-		cin >> per.x0;
-		cout << "введите y0" << endl;
-		cin >> per.y0;
-		cout << "введите x1" << endl;
-		cin >> per.x1;
-		cout << "введите x2" << endl;
-		cin >> per.y1;
-	
-		cout <<"x0="<< per.x0 << " "<<"y0=" << per.y0 << " "<<"x1=" << per.x1 << " "<<"y1=" << per.y1 << endl;
+	x.set();
+	x.show();
+
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,69 @@
+#include "pch.h"
+#include <iostream>
+#include<ctime>
+#include <iomanip>
+using namespace std;
+void sort(int *x, int m);
+void sort(double *x, int m);
+int main() {
+	setlocale(LC_ALL, "Russian");
+	srand(time(0));
+	int m, z;
+	cout << "Введите количество чисел" << endl;
+	cin >> m;
+	cout << "Какие числа будете вводить(0-дробные/1-целые)" << endl;
+	cin >> z;
+	if (z == 0) {
+		double*x = new double[m];
+		for (int i = 0; i < m; i++) {
+			cout << " Введите число" << endl;
+			cin >> x[i];
+		}
+		sort(x, m);
+
+		for (int i = 0; i < m; i++)
+			cout << x[i] << endl;
+	}
+	else {
+		int*x = new int[m];
+		for (int i = 0; i < m; i++) {
+			cout << " Введите число" << endl;
+			cin >> x[i];
+		}
+		sort(x, m);
+
+		for (int i = 0; i < m; i++)
+			cout << x[i] << endl;
+	}
+	system("pause");
+	return 0;
+
+}
+
+void sort(double *x, int m)
+{
+	int i, j, tmp;
+	cout << "Идет сортировка дробных чисел" << endl;
+	for (i = 0; i < m; i++)
+		for (j = m - 1; j >= 0; j--)
+			if (x[j] < x[j + 1])
+			{
+				tmp = x[j];
+				x[j] = x[j + 1];
+				x[j + 1] = tmp;
+			}
+}
+
+void sort(int *x, int m)
+{
+	int i, j, tmp;
+	cout << "Идет сортировка целых чисел" << endl;
+	for (i = 0; i < m; i++)
+		for (j = m - 1; j >= 0; j--)
+			if (x[j] < x[j + 1])
+			{
+				tmp = x[j];
+				x[j] = x[j + 1];
+				x[j + 1] = tmp;
+			}
+}

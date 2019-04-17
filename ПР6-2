@@ -1,0 +1,267 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+class Expression// Выражение
+{
+protected:
+	double a;
+public:
+	Expression(double b = 0) : a(b) {};//конструктор
+	virtual void print() = 0;//печать выражения
+	virtual double result(double b) = 0;// результат
+	virtual double derivative() = 0;// производная
+	virtual void copy(double b) = 0;// копирование выражения
+	virtual ~Expression() {};
+};
+class Cons : Expression// const
+{
+public:
+	Cons(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Constant:" << endl;
+	}
+	double result(double b)
+	{
+		return a;
+	}
+	double derivative()
+	{
+		return 0;
+	}
+	void copy(double b)
+	{
+
+	}
+};
+class Var : Expression// переменная
+{
+public:
+	Var(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Variable:" << endl;
+	}
+	double result(double b)
+	{
+		return b;
+	}
+	double derivative()
+	{
+		return 1;
+	}
+	void copy(double b)
+	{
+		a = b;
+	}
+};
+class Sum : Expression// сумма
+{
+public:
+	Sum(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Sum:" << endl;
+	}
+	double result(double b)
+	{
+		return a + b;
+	}
+	double derivative()
+	{
+		return 1;
+	}
+	void copy(double b)
+	{
+		a = a + b;
+	}
+};
+class Dif : Expression// разность
+{
+public:
+	Dif(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Difference:" << endl;
+	}
+	double result(double b)
+	{
+		return a - b;
+	}
+	double derivative()
+	{
+		return 1;
+	}
+	void copy(double b)
+	{
+		a = a - b;
+	}
+};
+class Mult : Expression// произведение
+{
+public:
+	Mult(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Multiply:" << endl;
+	}
+	double result(double b)
+	{
+		return a * b;
+	}
+	double derivative()
+	{
+		return 1;
+	}
+	void copy(double b)
+	{
+		a = a * b;
+	}
+};
+class Pri : Expression// частное
+{
+public:
+	Pri(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Quotient:" << endl;
+	}
+	double result(double b)
+	{
+		if (b != 0)
+			return a / b;
+		else return 0;
+	}
+	double derivative()
+	{
+		return 1;
+	}
+	void copy(double b)
+	{
+		if (b != 0)
+			a = a / b;
+		else a = 0;
+	}
+};
+class Sin : Expression// sin
+{
+public:
+	Sin(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Sinus:" << endl;
+	}
+	double result(double b)
+	{
+		return sin(a);
+	}
+	double derivative()
+	{
+		return cos(a);
+	}
+	void copy(double b)
+	{
+		a = b;
+	}
+};
+class Cos : Expression// cos
+{
+public:
+	Cos(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Cosinus:" << endl;
+	}
+	double result(double b)
+	{
+		return cos(b);
+	}
+	double derivative()
+	{
+		return -sin(a);
+	}
+	void copy(double b)
+	{
+		a = b;
+	}
+};
+class Exp : Expression// exp
+{
+public:
+	Exp(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Exponent:" << endl;
+	}
+	double result(double b)
+	{
+		return exp(b);
+	}
+	double derivative()
+	{
+		return  exp(a);
+	}
+	void copy(double b)
+	{
+		a = b;
+	}
+};
+class Ln : Expression// log
+{
+public:
+	Ln(double b = 0) : Expression(b) {};
+	void print()
+	{
+		cout << "Logarithm:" << endl;
+	}
+	double result(double b)
+	{
+		return log(b);
+	}
+	double derivative()
+	{
+		return  1 / a;
+	}
+	void copy(double b)
+	{
+		a = b;
+	}
+};
+int main()
+{
+	double a, b;
+	cout << "Input a, b" << endl;
+	cin >> a >> b;
+	Cons cnst = a;
+	cnst.print();
+	cout << "Result: " << cnst.result(b) << " Derivative: " << cnst.derivative() << endl;
+	Var v = a;
+	v.print();
+	cout << "Result: " << v.result(b) << " Derivative: " << v.derivative() << endl;
+	Sum s = a;
+	s.print();
+	cout << "Result: " << s.result(b) << " Derivative: " << s.derivative() << endl;
+	Dif d = a;
+	d.print();
+	cout << "Result: " << d.result(b) << " Derivative: " << d.derivative() << endl;
+	Mult m = a;
+	m.print();
+	cout << "Result: " << m.result(b) << " Derivative: " << m.derivative() << endl;
+	Pri p = a;
+	p.print();
+	cout << "Result: " << p.result(b) << " Derivative: " << p.derivative() << endl;
+	Sin sn = a;
+	sn.print();
+	cout << "Result: " << sn.result(b) << " Derivative: " << sn.derivative() << endl;
+	Cos cs = a;
+	cs.print();
+	cout << "Result: " << cs.result(b) << " Derivative: " << cs.derivative() << endl;
+	Exp e = a;
+	e.print();
+	cout << "Result: " << e.result(b) << " Derivative: " << e.derivative() << endl;
+	Ln l = a;
+	l.print();
+	cout << "Result: " << l.result(b) << " Derivative: " << l.derivative() << endl;
+	system("pause");
+	return 0;
+}

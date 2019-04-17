@@ -1,0 +1,82 @@
+#include "pch.h"
+#include <iostream>
+#include<ctime>
+#include <iomanip>
+using namespace std;
+
+double calc(int x, int y);
+double calc(double x, double y);
+
+int main() 
+{
+	setlocale(LC_ALL, "Russian");
+	int u ;
+	cout << "1-целые,2-дробные" << endl;
+	cin >> u;
+	if (u == 1) {
+		int x, y;
+		cout << "Введите 2 числа" << endl;
+		cin >> x >> y;
+		cout << calc(x, y) << endl;
+	}
+	else {
+		double x,y;
+		cout << "Введите 2 числа" << endl;
+		cin >> x >> y;
+		cout << calc(x, y) << endl;
+	}
+	system("pause");
+	return 0;
+}
+
+double calc(int x, int y)
+{
+	int r;
+	do {
+		cout << "i1+2-3*4/" << endl;
+		cin >> r;
+		switch (r)
+		{
+		case 1:
+			return x + y;
+			break;
+		case 2:
+			return x - y;
+			break;
+		case 3:
+			return x * y;
+			break;
+		case 4:
+			return x / y;
+		default:
+			break;
+		}
+
+	} while (r != 0);
+}
+
+double calc(double x, double y)
+{
+	int r;
+	do {
+		cout << "d1+2-3*4/" << endl;
+		cin >> r;
+		switch (r)
+		{
+		case 1:
+			return x + y;
+			break;
+		case 2:
+			return x - y;
+			break;
+		case 3:
+			return x * y;
+			break;
+		case 4:
+			return x / y;
+		default:
+			break;
+		}
+
+	} while (r != 0);
+}

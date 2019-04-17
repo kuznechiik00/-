@@ -1,0 +1,43 @@
+#include "pch.h"
+#include <iostream>
+#include <ctime>
+using namespace std;
+void fill(int **a, int x, int y)//заполнение массива
+{
+	srand(time(0));
+	for (int i = 0; i < x; i++)
+		for (int j = 0; j < y; j++)
+		{
+			a[i][j] = 10 + rand() % 40;
+		}
+}
+void show(int **a, int x, int y)
+{
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = 0; j < y; j++)
+		{
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+}
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int x, y;
+	cout << "Введите количество строк" << endl;
+	cin >> x;
+	cout << "Введите количество столбцов" << endl;
+	cin >> y;
+	int **a = new int*[x];//динамический двумерный массив
+	for (int j = 0; j < x; j++)
+	{
+		a[j] = new int[y];
+	}
+	fill(a, x, y);
+	show(a, x, y);
+	system("pause");
+	return 0;
+}
